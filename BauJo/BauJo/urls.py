@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index
+from .views import page_home, page_profile, page_key, page_today, page_this_week, page_today
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('', index, name = 'index'),
-    path('home/', index, name = 'index'),
-    path('profile/', index, name = 'profile'),
-
-
+    path('', page_home, name = 'home'),
+    path('home/', page_home, name = 'home'),
+    path('profile/', page_profile, name = 'profile'),
+    path('key/', page_key, name = 'key'),
+    path('this_week/', page_this_week, name = 'this_week'),
+    path('today/', page_today, name = 'today'),
 ]

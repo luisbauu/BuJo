@@ -8,14 +8,24 @@
 
 <html>
 <head>
+	<meta charest = "utf-8">
+	<meta name= "viewport" content = "width=device-width">
+
 	<title>{% block title %}{% endblock %}</title>
 	<nav>
         <ul>
-            <li><a href="home/">Home</a></li>
-            <li><a href="profile/">Profile</a></li>
+            <li><a href = "{% url 'home' %}">Home</a></li>
+            <li><a href = "{% url 'profile' %}">Profile</a></li>
+            <li><a href = "{% url 'key' %}">Key</a></li>
+            <li><a href = "{% url 'this_week' %}">This Week</a></li>
+            <li><a href = "{% url 'today' %}">Today</a></li>
         </ul>
     </nav>
+
+    <h2> {% block header %} {% endblock %} </h2>
 </head>
 <body>
+{% block body %}
+{% endblock %}
 </body>
 </html>
