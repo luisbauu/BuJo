@@ -14,7 +14,7 @@
 
 <h1> Hello! What is your name? </h1>
 
-<form method = "POST"> 
+<form url = "home" method = "POST"> 
 {% csrf_token %}
 {{ form }}
 <input type="submit" name="submit" id = "submit" value = "Submit Name">

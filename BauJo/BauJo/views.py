@@ -4,14 +4,24 @@ from django.views import View
 from datetime import datetime
 from .forms import home, profile, key, this_week, today
 
+name = None
+form = None
+
 def page_home(request): 
-	if request.method == 'POST':
-		form = home(request.POST)
-		if form.is_valid():
-			return render(request, 'home.html', {'form' : form, 'name' : form.cleaned_data['name']})
+	global name
+	global form
+
+	if name == None:
+		if request.method == 'POST':
+			form = home(request.POST)
+			if form.is_valid():
+				name = form.cleaned_data['name']
+				return render(request, 'home.html', {'form' : form, 'name' : name})
+		else:
+			form = home()
+			return render(request, 'home.html', {'form' : form})
 	else:
-		form = home()
-		return render(request, 'home.html', {'form' : form})
+		return render(request, 'home.html', {'form' : form, 'name' : name})
 
 def page_profile(request):
 	return render(request, 'profile.html')
